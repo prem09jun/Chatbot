@@ -1,0 +1,25 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "engines": {
+    "node": "8.11.2",
+    "npm": "6.1.0"
+  },
+  "dependencies": {
+    "@cloudant/cloudant": "^4.0.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "nano": "^6.4.4",
+    "path": "^0.12.7",
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

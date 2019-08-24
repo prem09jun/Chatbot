@@ -1,0 +1,66 @@
+<html>
+	<head>
+	<style>
+	body {
+	  margin: 0 auto;
+	  max-width: 800px;
+	  padding: 0 20px;
+	}
+
+	.container {
+	  border: 2px solid #dedede;
+	  background-color: #f1f1f1;
+	  border-radius: 5px;
+	  padding: 10px;
+	  margin: 10px 0;
+	}
+
+	.darker {
+	  border-color: #ccc;
+	  background-color: #ddd;
+	}
+
+	.container::after {
+	  content: "";
+	  clear: both;
+	  display: table;
+	}
+
+	.container img {
+	  float: left;
+	  max-width: 60px;
+	  width: 100%;
+	  margin-right: 20px;
+	  border-radius: 50%;
+	}
+
+	.container img.right {
+	  float: right;
+	  margin-left: 20px;
+	  margin-right:0;
+	}
+
+	.time-right {
+	  float: right;
+	  color: #aaa;
+	}
+
+	.time-left {
+	  float: left;
+	  color: #999;
+	}
+	</style>
+	  <script src="https://cdn.pubnub.com/pubnub-3.15.1.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	  <script src="https://cdn.pubnub.com/sdk/pubnub-angular/pubnub-angular-3.2.1.min.js"></script>
+	  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+	  <script src="app.js"></script>
+	</head>
+	<body ng-app="myModule" ng-controller="chatbotController" ng-init="speak()">
+		<center><h2>Voice Bot</h2></center>
+			<ol class="box">
+
+			</ol>
+	</body>
+</html>
