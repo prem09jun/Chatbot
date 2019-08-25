@@ -49,18 +49,32 @@
 	  float: left;
 	  color: #999;
 	}
+	
+	.main-div {	
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	nav ul{height:500px; width:100%;}
+	nav ul{overflow:hidden; overflow-y:scroll;}
 	</style>
 	  <script src="https://cdn.pubnub.com/pubnub-3.15.1.min.js"></script>
 	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	  <script src="https://cdn.pubnub.com/sdk/pubnub-angular/pubnub-angular-3.2.1.min.js"></script>
 	  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 	  <script src="app.js"></script>
 	</head>
 	<body ng-app="myModule" ng-controller="chatbotController" ng-init="speak()">
+		<div class="main-div">
 		<center><h2>Voice Bot</h2></center>
-			<ol class="box">
+		<nav>
+			<ul class="boxnumber">
 
-			</ol>
+			</ul>
+		</nav>
+		</div>
 	</body>
 </html>

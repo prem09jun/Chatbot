@@ -2,6 +2,7 @@ var express = require('express');
 var https = require('https');
 var fs = require('fs');
 var path = require('path');
+var AssistantV1 = require('ibm-watson/assistant/v1');
 var bodyParser = require('body-parser');
 var host = process.env.VCAP_APP_HOST || 'localhost';
 var port = process.env.PORT || process.env.VCAP_APP_PORT || '8080';
@@ -10,6 +11,13 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static(__dirname + '/'));
+
+var service = new AssistantV1({
+  version: '2019-02-28',
+  username: 'd3574667-bbb3-48aa-b1cc-5e32973bac1f',
+  password: 'BcvVAEGUL0Zw',
+  url: 'https://gateway.watsonplatform.net/conversation/api'
+});
 
 var Cloudant = require('@cloudant/cloudant');
 app.use('/', express.static(__dirname + '/'));
@@ -65,10 +73,34 @@ app.post('/textToSpeech', function (req, res) {
     console.log('Inside Express api to make a text to speech call');
 	var inputFromUser = req.body.msg.currentMsg;
 	var responseForBot = '';
- 	res.json ({
-		success: true,
-		message: 'Ticket data updation issue !'
-	});
+	service.message({
+	  workspace_id: '5326febc-dff2-48e8-a927-900e12a0c9e8',
+	  input: {'text': 'Hi Maya'}
+	  })
+	  .then(response => {
+		//console.log(JSON.stringify(res, null, 2));
+		res.json ({
+			success: true,
+			message: 'Ticket data updation issue !',
+			reply: response.output.generic[0].text
+		});
+	  })
+	  .catch(err => {
+		console.log(err)
+	  });	
+/* 	if(inputFromUser.indexOf('Maya') >= 0){
+		responseForBot = 'Hi, how can i help you?';
+	}else if(inputFromUser.indexOf('Create Ticket') >= 0){
+		responseForBot = 'Ok what is userid for which i should create a ticket?';
+	}else if(inputFromUser.indexOf('Current status of my ticket')){
+		responseForBot = 'For sure can u tell me ur ticket number';
+	}else if(inputFromUser.indexOf('user id is 493590')){
+		responseForBot = 'Give me a min before i fetch ur updates';
+	}else if(inputFromUser.indexOf('ticket number is ')){
+		responseForBot = 'Give me a min before i fetch the ticket details';
+	}else{
+		responseForBot = 'I could not understand you.';
+	} */
 });
 
 // Update existence record in cloudant DB
